@@ -11,7 +11,7 @@ componentWillMount()
       {
         sheet = <Sheet/>;
       this.setState(skill);
-      lol();
+      scriptsheet();
     }
     else if (event == 2)
       {

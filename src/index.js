@@ -28,7 +28,7 @@ else if (i === 0)
 function del(){
   i = 1;
 }
-function lol(){
+function scriptsheet(){
   setTimeout(function(){
     picker = new CP(document.getElementById("jscolor"));
         picker.on("change", function(color) {

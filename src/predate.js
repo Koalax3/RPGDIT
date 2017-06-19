@@ -43,12 +43,8 @@ var predate = {
     nom: 'Nain',
     image: 'http://depret.tk/asset/predate/nain.png'
    },
-  //  element12: {
-  //   nom: 'Nazi',
-  //   image: 'http://depret.tk/asset/predate/nazi.png'
-  //  },
    element13: {
     nom: 'Stone',
     image: "http://depret.tk/asset/predate/stone.png"
    },
-};
+}
