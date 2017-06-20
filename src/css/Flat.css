@@ -479,7 +479,7 @@ button:hover{
     }
     body{min-width: 360px;
     max-width: 360px;}
-    #root{
+    #sheet{
     max-height: 230vh;
     min-height: 230vh;
     min-width: 360px;

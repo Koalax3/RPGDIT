@@ -12,46 +12,46 @@ class Sheet extends React.Component{
 	{
     if (event == 1)
     {
-        act();
+        b = 1;
         backg = Object
-                      .keys(this.state.back)
-                      .map(key => <Back key={key} details={this.state.back[key]}/>);
-                      this.setState(skill);
+                .keys(this.state.back)
+                .map(key => <Back key={key} details={this.state.back[key]}/>);
+                this.setState(skill);
     }
     else if (event == 2)
     {
-      pas();
-              backg = Object
-                      .keys(this.state.predate)
-                      .map(key => <Back key={key} details={this.state.predate[key]}/>);
-                      this.setState(skill);
+      b = 0;
+      backg = Object
+              .keys(this.state.predate)
+              .map(key => <Back key={key} details={this.state.predate[key]}/>);
+              this.setState(skill);
     }
     else if (event == 3)
     {
-      pas();
-        backg = Object
-                      .keys(this.state.skill)
-                      .map(key => <Back key={key} details={this.state.skill[key]}/>);
-                      this.setState(skill);
+      b = 0;
+      backg = Object
+              .keys(this.state.skill)
+              .map(key => <Back key={key} details={this.state.skill[key]}/>);
+              this.setState(skill);
     }
-    else if (event == 4){
-      pas();
-       backg = Object
-                      .keys(this.state.box)
-                      .map(key => <Back key={key} details={this.state.box[key]}/>);
-                      this.setState(skill);
+    else if (event == 4)
+    {
+      b = 0;
+      backg = Object
+             .keys(this.state.box)
+             .map(key => <Back key={key} details={this.state.box[key]}/>);
+             this.setState(skill);
     }
     else if (event == 5)
     {
-      pas();
-        backg = Object
-                      .keys(this.state.portrait)
-                      .map(key => <Back key={key} details={this.state.portrait[key]}/>);
-                      this.setState(skill);
+      b = 0;
+      backg = Object
+              .keys(this.state.portrait)
+              .map(key => <Back key={key} details={this.state.portrait[key]}/>);
+              this.setState(skill);
     }
     else if (event == 6)
     {
-      pas();
       backg= <Tutoriel/>
       this.setState(skill);
     }

@@ -9,7 +9,26 @@
     <title>RPGDIT</title>
   </head>
   <body>
+
     <?php
+try
+{
+	// On se connecte à MySQL
+	$bdd = new PDO('mysql:host=mysql.hostinger.fr;dbname=u380693128_sheet;charset=utf8', 'u380693128_admin', 'samsung54');
+}
+catch(Exception $e)
+{
+	// En cas d'erreur, on affiche un message et on arrête tout
+        die('Erreur : '.$e->getMessage());
+}
+$reponse = $bdd->query('SELECT * FROM save_json');
+while ($donnees = $reponse->fetch())
+{
+  echo $donnees['id'];
+  echo $donnees['pseudo'];
+  echo $donnees['json'];
+}
+
     ?>
     <div id="root"><!--React--></div>
 
@@ -32,6 +51,8 @@
     <script type="text/babel" src="../src/home.js"></script>
     <script type="text/babel" src="../src/canvas.js"></script>
     <script id ="index" type="text/babel" src="../src/index.js"></script>
+    <script type="text/javascript" src="../src/css.js"></script>
+    <script type="text/javascript" src="../src/download.js"></script>
     <script type="text/javascript" src="../src/box.js"></script>
     <script type="text/javascript" src="../src/background.js"></script>
     <script type="text/babel" src="../src/image.js"></script>
