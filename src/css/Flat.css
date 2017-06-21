@@ -382,6 +382,7 @@ button:hover{
 }
 
 .rig{
+    -webkit-padding-start: 4vh;
 	list-style: none;
     margin-bottom: 1vh;
     display: grid;
