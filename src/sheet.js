@@ -1,6 +1,6 @@
 class Sheet extends React.Component{
 
-      state = {
+    state = {
     back,
     skill,
     predate,

@@ -47,4 +47,4 @@ var predate = {
     nom: 'Stone',
     image: "http://depret.tk/asset/predate/stone.png"
    },
-}
+};
