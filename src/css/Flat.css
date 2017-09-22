@@ -33,7 +33,7 @@ body::-webkit-scrollbar-thumb {
 }
 @font-face {
 	font-family: "FLAT";
-	src: url('./font/KaushanScript-Regular.otf');
+	src: url('http://depret.tk/asset/font/KaushanScript-Regular.otf');
 }
 
 @keyframes movetitle

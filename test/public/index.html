@@ -3,6 +3,7 @@
 $username = NULL;
 $password = NULL;
 $agree = false;
+
 if ($_COOKIE['username'] != "PHPLOL")
 {
 if(isset($_POST['submit']))
@@ -13,11 +14,7 @@ if(isset($_POST['submit']))
 	    $agree = Login($username, $password, $agree);
         if ($agree == true)
         {
-            $json = Save_json($username, $password);
-            $category = Save_category($username);
             setcookie("username", $username);
-            echo "<option id='save' style='display:none;' value='".$json."'></option>";
-            echo "<option id='category' style='display:none;' value='".$category."'></option>";
         }
 }
     }
@@ -33,11 +30,7 @@ if(isset($_POST['Signin']))
                 $agree = Login($username, $password, $agree);
                 if ($agree == true)
                 {
-                    $json = Save_json($username, $password);
-                    $category = Save_category($username);
                     setcookie("username", $username);
-                    echo "<option id='save' style='display:none;' value='".$json."'></option>";
-                    echo "<option id='category' style='display:none;' value='".$category."'></option>";
                 }
             }
     }
@@ -65,7 +58,7 @@ if(isset($_POST['Signin']))
 
     <!-- React Library -->
     <script src="https://unpkg.com/react@15/dist/react.min.js"></script>
-    <script src="https://unpkg.com/react-dom@15/dist/react-dom.min.js"></script>
+    <script src="https://unpkg.com/react-dom@16.0.0-alpha/dist/react-dom.min.js"></script>
     <!-- Other Library -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/fabric.js/1.7.14/fabric.js"></script>
@@ -75,13 +68,13 @@ if(isset($_POST['Signin']))
     <!------------------------------------------------------------------------------------------------------------------>
     <!-- React Components -->
     <!------------------------------------------------------------------------------------------------------------------>
+    <script type="text/javascript" src="src/download.js"></script>
     <script type="text/babel" src="src/main.js"></script>
     <script type="text/babel" src="src/image.js"></script>
     <script type="text/babel" src="src/sheet.js"></script>
     <script type="text/babel" src="src/home.js"></script>
     <script id ="index" type="text/babel" src="src/index.js"></script>
     <script type="text/javascript" src="src/css.js"></script>
-    <script type="text/javascript" src="src/download.js"></script>
     <script type="text/javascript" src="src/box.js"></script>
     <script type="text/javascript" src="src/background.js"></script>
     <script type="text/javascript" src="src/portrait.js"></script>
@@ -89,4 +82,5 @@ if(isset($_POST['Signin']))
     <script type="text/javascript" src="src/skill.js"></script>
         <!-- Application entry point -->
   </body>
+  <footer><h2 id="footer"></h2></footer>
 </html>

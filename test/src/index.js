@@ -6,39 +6,6 @@ var imgs;
 var img;
 var picker;
 
-function getcookieint(str)
-{
-  var tmp = document.cookie.split(';');
-  var i;
-  i = 0;
-  while (tmp[i] != null)
-  {
-  if (tmp[i].split('=')[0].replace(' ', '') == str)
-  {
-    return Number(tmp[i].split('=')[1]);
-  }
-    i++;
-  }
-  console.log("error: not number");
-  return -1;
-}
-
-function getcookie(str)
-{
-  var tmp = document.cookie.split(';');
-  var i;
-  i = 0;
-  while (tmp[i] != null)
-  {
-  if (tmp[i].split('=')[0].replace(' ', '') == str)
-  {
-    return (tmp[i].split('=')[1]);
-  }
-    i++;
-  }
-  console.log("not in cookie");
-  return null;
-}
 function popup()
 {
   var i = 0;

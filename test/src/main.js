@@ -3,8 +3,15 @@ var sheet;
 var login;
 var json = {};
 var category = {};
-var save_json;
-var savebtn;
+var charact = {};
+
+class Inwork extends React.Component{
+  render(){
+    return(<div id="accueil">
+    <h1 id="please-home">Tab not ready, project in work.</h1>
+    </div>);
+  }
+}
 
 class Logout extends React.Component{
   logout = event =>
@@ -85,9 +92,9 @@ componentWillMount()
       login = <Notlogin/>;
       this.setState(login);
     }else{
+      Resend();
       login = <Logout/>;
-      loadcategory();
-      loadsave();
+      loadbdd();
     }
     if (getcookieint("Page") == -1)
     {
@@ -121,30 +128,34 @@ componentWillMount()
         sheet = <Sheet/>;
         this.setState(sheet);
         scriptsheet();
-    }
+      }
+      else{
+        sheet = <Inwork/>;
+        this.setState(sheet);
+        canvas = undefined;
+      }
       document.cookie = "Page="+event;
     }
    	
   render() { 
     return (
-      <div>
+      <div onClick={e => this.turn()}>
     <h2 id="titre"><div>RPGDIT</div></h2>
         <ul id = 'home' onClick={e => this.turn()}>
       <li id ='back'><a onClick={e => this.menu(1)}>HOME</a></li>
-      <li id ='pred'><a onClick={e => this.onglet(1)}>Generator</a>
+      <li id ='pred'><a>Generator</a>
         <ul>
         <li><a onClick={e => this.menu(2)}>Sheet</a></li>
-        <li><a href="#">Face</a></li>
-        <li><a href="#">Map</a></li>
+        <li><a onClick={e => this.menu(3)}>Face</a></li>
+        <li><a onClick={e => this.menu(4)}>Map</a></li>
         </ul>
       </li>
-      <li id ='skill'><a onClick={e => this.onglet(3)}>Inventaire</a></li>
-      <li id ='box'><a  onClick={e => this.onglet(4)}>Game</a></li>
-      <li id ='about'><a  onClick={e => this.onglet(5)}>About</a></li>
+      <li id ='skill'><a onClick={e => this.menu(5)}>Inventory</a></li>
+      <li id ='box'><a  onClick={e => this.menu(6)}>Game</a></li>
+      <li id ='about'><a  onClick={e => this.menu(7)}>About</a></li>
       {login}
     </ul>
     {sheet}
-    <h2 id="footer"></h2>
     </div>
     );
   }

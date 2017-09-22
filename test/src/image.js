@@ -1,4 +1,8 @@
 class Optjson extends React.Component {
+  state = {
+    json
+  }
+
   quiche = event =>
   {
       var newArr = JSON.parse(event);

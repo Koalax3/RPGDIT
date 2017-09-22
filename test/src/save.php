@@ -17,5 +17,9 @@ else if ($_POST['username'] && $_POST['name'] && $_POST['sheet'])
 {
 	$reponse = $bdd->query("INSERT INTO `homecategory`(`username`, `name`, `sheet`) VALUES ('".$_POST['username']."', '".$_POST['name']."', '".$_POST['sheet']."')");
 }
+else if ($_POST['username'] && $_POST['sheet'] && $_POST['category'] && $_POST['skill'] && $_POST['value'])
+{
+	$reponse = $bdd->query("INSERT INTO `homecharact`(`username`, `sheet`, `category`, `skill`, `value`) VALUES ('".$_POST['username']."', '".$_POST['sheet']."', '".$_POST['category']."', '".$_POST['skill']."', '".$_POST['value']."')");
+}
 $bdd = null;
 ?>

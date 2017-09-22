@@ -1,3 +1,7 @@
+var save_json = null;
+var savebtn;
+var ghost = "ghost";
+
 class Sheet extends React.Component{
 
 state = {
@@ -5,8 +9,7 @@ state = {
     skill,
     predate,
     portrait,
-    box,
-    json
+    box
    };
 
     componentWillMount()
@@ -16,17 +19,13 @@ state = {
             setTimeout(function(){
              document.getElementById('json').style.display = "grid";
          },20);
-         savebtn = (<input onClick={(e) => SendCanvas(1)} id='saveButton' type="submit" name="save" value="Save"/>);
-         this.setState(json)
-        setTimeout(this.setup(), 10);
+         savebtn = (<input onClick={(e) => this.Send()} id='saveButton' type="submit" name="save" value="Save"/>);
          }
     }
-    setup = event =>
+
+    Send = event =>
     {
-        save_json = Object
-        .keys(this.state.json)
-        .map(key => <Optjson key={key} details={this.state.json[key]}/>);
-        this.setState(json);
+        SendCanvas(1)
     }
     onglet = event => 
 	{
@@ -81,15 +80,30 @@ state = {
                   var agree = confirm("If you press 'OK' your current project is losting");
       if (agree == true)
       {
-            savebtn = (<input onClick={(e) => SendCanvas(1)} id='saveButton' type="submit" name="save" value="Save"/>);
+            savebtn = (<input onClick={(e) => this.Send()} id='saveButton' type="submit" name="save" value="Save"/>);
             delete canvas._objects;
             r = 0;
             canvas.add(new fabric.IText("", { left: -100, top: -100}));
       }
         }
-                turn = event =>
+    turn = event =>
     {
-      this.setState(sheet);
+        this.setState(sheet);
+    }
+    Sheetvolet = event =>{
+        if (save_json == null)
+        {
+        save_json = Object
+        .keys(json)
+        .map(key => <Optjson key={key} details={json[key]}/>);
+        ghost = "list-json";
+        }
+        else
+            {
+            save_json = null;
+            ghost = "ghost";
+            }
+        this.setState(save_json);
     }
     render(){
         return(<div id="sheet">
@@ -120,8 +134,8 @@ state = {
         <option value="Comic Sans MS">Comic Sans MS</option>
         <option value="wingdings">Wingdings</option>
     </select>
-    <li id ='json'><a>Sheet</a>
-        <ul>
+    <li onClick={this.Sheetvolet} id ='json'><a>Sheet</a>
+        <ul id={ghost}>
         {save_json}
         </ul>
       </li>

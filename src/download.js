@@ -4,8 +4,11 @@ function    download(opt) {
           var url = canva.toDataURL("image/png");
           if(opt === 2)
           {
-          open(url,"_blank");
-        }
+            var w=window.open('Your image','image from canvas');
+            w.document.write("<link rel='stylesheet' type='text/css' href='src/css/Flat.css'>");
+            w.document.write("<h1 id='titre'>Your sheet:</h1>");
+            w.document.write("<img src='"+url+"' alt='from canvas'style='margin: 2%;margin-left: 29%;'/>");
+          }
         else if (opt ===3)
         {
           var doc = new jsPDF('p', 'mm');
