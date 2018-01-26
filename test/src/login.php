@@ -1,23 +1,11 @@
 <?php
-
-if ($_POST['recupe'])
-{
-    $username = $_POST['recupe'];
-    $json = Save_json($username);
-    $category = Save_category($username);
-    $charact = Save_charact($username);
-    echo "<option id='save' style='display:none;' value='".$json."'></option>";
-    echo "<option id='category' style='display:none;' value='".$category."'></option>";
-    echo "<option id='characts' style='display:none;' value='".$charact."'></option>";
-}
-
 function Save_json($username)
 {
-    $json;
+    $json = "";
       try
 {
 	// On se connecte à MySQL
-	$bdd = new PDO('mysql:host=mysql.hostinger.fr;dbname=u380693128_sheet;charset=utf8', 'u380693128_admin', 'samsung54');
+	$bdd = new PDO('mysql:host=localhost;dbname=u380693128_sheet;charset=utf8', 'u380693128_admin', 'samsung54');
 }
 catch(Exception $e)
 {
@@ -36,11 +24,11 @@ return $json;
 
 function Save_category($username)
 {
-    $category;
+    $category ="";
       try
 {
 	// On se connecte à MySQL
-	$bdd = new PDO('mysql:host=mysql.hostinger.fr;dbname=u380693128_sheet;charset=utf8', 'u380693128_admin', 'samsung54');
+	$bdd = new PDO('mysql:host=localhost;dbname=u380693128_sheet;charset=utf8', 'u380693128_admin', 'samsung54');
 }
 catch(Exception $e)
 {
@@ -61,11 +49,11 @@ return $category;
 
 function Save_charact($username)
 {
-    $charact;
+    $charact = "";
       try
 {
 	// On se connecte à MySQL
-	$bdd = new PDO('mysql:host=mysql.hostinger.fr;dbname=u380693128_sheet;charset=utf8', 'u380693128_admin', 'samsung54');
+	$bdd = new PDO('mysql:host=localhost;dbname=u380693128_sheet;charset=utf8', 'u380693128_admin', 'samsung54');
 }
 catch(Exception $e)
 {
@@ -75,7 +63,7 @@ catch(Exception $e)
 $reponse = $bdd->query("SELECT * FROM homecharact WHERE username='".$username."' ORDER BY  `skill` ASC");
 while ($donnees = $reponse->fetch())
 {
-    $charact .= $donnees['sheet'].';;'.$donnees['category'].';;'.$donnees['skill'].';;'.$donnees['value'].';;';
+    $charact .= $donnees['sheet'].';;'.$donnees['category'].';;'.$donnees['id'].';;'.$donnees['skill'].';;'.$donnees['value'].';;';
 }
 if ($charact == "")
 {
@@ -89,7 +77,7 @@ function Login($username, $password, $agree)
    try
 {
 	// On se connecte à MySQL
-	$bdd = new PDO('mysql:host=mysql.hostinger.fr;dbname=u380693128_sheet;charset=utf8', 'u380693128_admin', 'samsung54');
+	$bdd = new PDO('mysql:host=localhost;dbname=u380693128_sheet;charset=utf8', 'u380693128_admin', 'samsung54');
 }
 catch(Exception $e)
 {
@@ -129,7 +117,7 @@ function Signin($username, $password)
    try
 {
 	// On se connecte à MySQL
-	$bdd = new PDO('mysql:host=mysql.hostinger.fr;dbname=u380693128_sheet;charset=utf8', 'u380693128_admin', 'samsung54');
+	$bdd = new PDO('mysql:host=localhost;dbname=u380693128_sheet;charset=utf8', 'u380693128_admin', 'samsung54');
 }
 catch(Exception $e)
 {
@@ -160,5 +148,17 @@ return false;
 return false;
 }
 $bdd = null;
+}
+
+if ($_POST['recupe'])
+{
+    
+    if(!isset($username))$username = $_POST['recupe'];
+    $json = Save_json($username);
+    $category = Save_category($username);
+    $charact = Save_charact($username);
+    echo "<option id='save' style='display:none;' value='".$json."'></option>";
+    echo "<option id='category' style='display:none;' value='".$category."'></option>";
+    echo "<option id='characts' style='display:none;' value='".$charact."'></option>";
 }
 ?>

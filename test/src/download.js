@@ -54,7 +54,7 @@ function    loadsave()
     j++;
   }
   document.getElementById('save').parentNode.removeChild(document.getElementById('save'));
-  console.log(json);
+  console.log("json=" + json);
   }
 }
 
@@ -91,16 +91,16 @@ function    loadcharact()
         {
                 if (charact[tmp[i]] == undefined)
                 {
-                    charact[tmp[i]] = {[tmp[i+1]]:{["element"+j]:{sheet: tmp[i+2], nom:tmp[i+3]}}};
+                    charact[tmp[i]] = {[tmp[i+1]]:{["element"+j]:{id: tmp[i+2], skill: tmp[i+3], value:tmp[i+4]}}};
                 }
                 else{
                     if(charact[tmp[i]][tmp[i+1]] == undefined)
                         {
-                            charact[tmp[i]][tmp[i+1]] = {["element"+j]:{skill: tmp[i+2], value:tmp[i+3]}};
+                            charact[tmp[i]][tmp[i+1]] = {["element"+j]:{id: tmp[i+2], skill: tmp[i+3], value:tmp[i+4]}};
                         }
                         else
-                            charact[tmp[i]][tmp[i+1]]["element"+j]={skill: tmp[i+2], value:tmp[i+3]};
-                i += 4;
+                            charact[tmp[i]][tmp[i+1]]["element"+j]={id: tmp[i+2], skill: tmp[i+3], value:tmp[i+4]};
+                i += 5;
                 j++;
                 }
         }
@@ -206,12 +206,10 @@ function    receivedText(e) {
     xmlhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
     xmlhttp.send(encodeURI('username=' + user + '&name=' + category + '&sheet='+ sheet));
   }
-  function Sendcharact(category)
+  function Sendcharact(skill, value, category)
   {
     var user = getcookie('username');
     var sheet = json["element"+nbrsheet].nom;
-    var skill = document.getElementsByName('skill')[0].value;
-    var value = document.getElementsByName('value')[0].value;
         if (window.XMLHttpRequest) {
             // code for IE7+, Firefox, Chrome, Opera, Safari
             xmlhttp = new XMLHttpRequest();
@@ -264,10 +262,10 @@ function    receivedText(e) {
         };
         if (option == 1)
         {
-            var name = prompt("name sheet?");
-            if (name == null)
+            var name = document.getElementsByName('sheetname')[0].value;
+            if (name == null || name == "")
                 {
-                    alert("Operation Aborted");
+                    alert("Invalid Name: Operation Aborted");
                     return;
                 }
             xmlhttp.open("POST",'src/save.php', true);
@@ -308,12 +306,8 @@ function    receivedText(e) {
       }
 }
 
-  function DeleteCharact(skill, value, category) {
+  function DeleteCharact(skill, value, id, mode) {
         
-          var sheet = json["element"+nbrsheet].nom;
-          var tmp = getcookie('username');
-          console.log(category);
-          category = document.getElementsByName("titre-category")[category].innerHTML;
         if (window.XMLHttpRequest) {
             // code for IE7+, Firefox, Chrome, Opera, Safari
             xmlhttp = new XMLHttpRequest();
@@ -327,13 +321,25 @@ function    receivedText(e) {
                 Resend();
             }
         };
-        var agree = confirm("If you press 'OK' your charact'"+skill+"' is losting");
+        if (mode == 0)
+        {
+        var agree = confirm("If you press 'OK' your charact '"+skill+"' is losting");
       if (agree == true)
       {
-        xmlhttp.open("POST",'src/delete.php', true);
+        xmlhttp.open("POST",'http://localhost/rpgdit/test/src/delete.php', true);
         xmlhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
-        xmlhttp.send(encodeURI('username=' + tmp + '&sheet=' + sheet + '&category=' + category + '&skill=' + skill+'&value=' + value));
+        xmlhttp.send(encodeURI('id=' + id + '&skill=' + skill+'&value=' + value));
       }
+    }
+    else{
+        var agree = confirm("If you press 'OK' your charact '"+skill+"' is changing");
+        if (agree == true)
+        {
+          xmlhttp.open("POST",'src/change.php', true);
+          xmlhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+          xmlhttp.send(encodeURI('id=' + id + '&skill=' + skill+'&value=' + value));
+        }
+    }
 }
 
 function Resend()

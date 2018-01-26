@@ -1,4 +1,4 @@
-<?php include 'src/login.php';?>
+<!-- //<?php include 'C:\wamp64\www\RPGDIT\test\src\login.php';?> -->
     <?php
 $username = NULL;
 $password = NULL;
@@ -35,9 +35,10 @@ if(isset($_POST['Signin']))
             }
     }
 }
-}else{
+}else
+{
     setcookie("username","PHPLOL",time()-1);
-    header('Location: http://depret.tk/test/');
+    header('Location: http://localhost/rpgdit/test/');
 }
 ?>
 <!doctype html>
@@ -48,7 +49,8 @@ if(isset($_POST['Signin']))
     <link rel="icon" href="./public/favicon.ico" />
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
     <link rel="stylesheet" type="text/css" href="src/css/Flat.css">
-    <link rel="stylesheet" type="text/css" href="src/color-picker/color-picker.min.css">
+    <link rel="stylesheet" type="text/css" href="../src/color-picker/color-picker.min.css">
+    
     <title>RPGDIT</title>
   </head>
   <body>

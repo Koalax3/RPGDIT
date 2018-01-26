@@ -2,7 +2,7 @@
 try
 {
 	// On se connecte à MySQL
-	$bdd = new PDO('mysql:host=mysql.hostinger.fr;dbname=u380693128_sheet;charset=utf8', 'u380693128_admin', 'samsung54');
+	$bdd = new PDO('mysql:host=localhost;dbname=u380693128_sheet;charset=utf8', 'u380693128_admin', 'samsung54');
 }
 catch(Exception $e)
 {
