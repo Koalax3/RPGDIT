@@ -1,9 +1,46 @@
+note{
+-webkit-clip-path: polygon(56% 62%, 56% 81%, 29% 82%, 29% 72%, 43% 72%, 43% 60%, 21% 60%, 21% 31%, 36% 31%, 35% 46%, 46% 47%, 47% 24%, 73% 24%, 73% 36%, 58% 36%, 58% 48%, 76% 49%, 77% 75%, 66% 76%, 66% 62%);
+clip-path: polygon(56% 62%, 56% 81%, 29% 82%, 29% 72%, 43% 72%, 43% 60%, 21% 60%, 21% 31%, 36% 31%, 35% 46%, 46% 47%, 47% 24%, 73% 24%, 73% 36%, 58% 36%, 58% 48%, 76% 49%, 77% 75%, 66% 76%, 66% 62%);
+}
+/*------------------------------------------------------Animate-Font------------------------------------------------*/
+@keyframes rotate{
+    from{
+        transform: rotate(0deg);
+    }
+    to{
+        transform: rotate(360deg);
+    }
+}
+@font-face {
+	font-family: "FLAT";
+	src: url('http://localhost/rpgdit/asset/font/KaushanScript-Regular.otf');
+}
+
+@keyframes move
+{
+        from {width: 3%;}
+    to {width: 100%;}
+}
+
+@keyframes movetitle
+{
+    from {margin-top: -7vh;}
+    to {margin-top: 0vh;}
+}
+
+@keyframes gost
+{
+        from {filter: alpha(opacity=0);
+    opacity: 0;}
+    to {opacity: 100%;}
+}
+/*-------------------------------------------------------------Main------------------------------------------------*/
 body {
     background-color: rgba(236, 240, 241,1.0);
-    background: -webkit-radial-gradient(circle, rgba(236, 240, 241,1.0), rgba(189, 195, 199,1.0), rgba(236, 240, 241,1.0)); /* Safari */
-    background: -o-radial-gradient(circle, rgba(236, 240, 241,1.0), rgba(189, 195, 199,1.0), rgba(236, 240, 241,1.0)); /* Opera 11.6 to 12.0 */
-    background: -moz-radial-gradient(circle, rgba(236, 240, 241,1.0), rgba(189, 195, 199,1.0), rgba(236, 240, 241,1.0)); /* Firefox 3.6 to 15 */
-    background: radial-gradient(circle, rgba(236, 240, 241,1.0), rgba(189, 195, 199,1.0), rgba(236, 240, 241,1.0)); /* Standard syntax */
+    background: -webkit-radial-gradient(circle, rgba(236, 240, 241,1.0), rgba(189, 195, 199,1.0), rgba(236, 240, 241,1.0));
+    background: -o-radial-gradient(circle, rgba(236, 240, 241,1.0), rgba(189, 195, 199,1.0), rgba(236, 240, 241,1.0));
+    background: -moz-radial-gradient(circle, rgba(236, 240, 241,1.0), rgba(189, 195, 199,1.0), rgba(236, 240, 241,1.0));
+    background: radial-gradient(circle, rgba(236, 240, 241,1.0), rgba(189, 195, 199,1.0), rgba(236, 240, 241,1.0));
     background-size: cover;
     margin: 0;
 }
@@ -13,7 +50,7 @@ body::-webkit-scrollbar {
 }
  
 body::-webkit-scrollbar-track {
-    -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.3);
+    box-shadow: inset 0 0 6px rgba(0,0,0,0.3);
 }
  
 body::-webkit-scrollbar-thumb {
@@ -21,26 +58,19 @@ body::-webkit-scrollbar-thumb {
   outline: 1px solid slategrey;
 }
 
-#root{
-}
-#sheet{
-    overflow: hidden;
-    height: 108vh;
-}
-#accueil{
-    overflow: hidden;
-    height: 81.6vh;
-}
-@font-face {
-	font-family: "FLAT";
-	src: url('http://depret.tk/asset/font/KaushanScript-Regular.otf');
+#inputName{
+    background-color: transparent;
+    border-bottom: 1%;
+    border-bottom-style: groove;
+    border-bottom-color: rgba(44, 62, 80,1.0);;
 }
 
-@keyframes movetitle
-{
-        from {margin-top: -7vh;}
-    to {margin-top: 0vh;}
+.alert{
+    margin-bottom: 0vh;
+    font-size: 1.7vh;
+    padding: 1vh;
 }
+
 #titre {
     animation : movetitle 1s 1;
     margin-top: 0vh;
@@ -51,39 +81,30 @@ body::-webkit-scrollbar-thumb {
     color:rgba(44, 62, 80,1.0);
     background-color: rgba(149, 165, 166,1.0);
 }
-
+#titre div:hover {
+    transform: rotate(-5deg);
+}
+/*-----------------Barman(joke "bar main")--------*/
 #home {
+    animation : move 0.5s 1;
     list-style-type: none;
     margin: 0;
     margin-bottom: 5vh;
     padding: 0;
-    display: flex;
+    display: inline;
     position: absolute;
-    width: 3%;
-    padding-bottom: 6vh;
-    background-image: url('./icon/arrow.png');
-    background-size:cover; 
-
-}
-@keyframes move
-{
-        from {width: 3%;}
-    to {width: 100%;}
-}
-#home:hover{
-    animation : move 0.5s 1;
-    background-image: none;
     width: 100%;
-    padding: 0;
     background-color: #7f8c8d;
 }
 
+
 #home li {
     float: left;
+    cursor: pointer;
 }
 
 #home li a{
-    display: none;
+    display: block;
     color: #34495e;
     font-family: "FLAT";
     text-align: center;
@@ -91,9 +112,7 @@ body::-webkit-scrollbar-thumb {
     padding: 1vh 2vh;
     text-decoration: none;
 }
-#home:hover li a{
-    display: block;
-}
+
 #home li ul
 {
     list-style-type: none;
@@ -101,7 +120,7 @@ body::-webkit-scrollbar-thumb {
     position: absolute;
     background-color: #7f8c8d;
     box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
-    z-index: 1;
+    z-index: 10;
     padding-left: 0;
 }
 
@@ -110,24 +129,436 @@ body::-webkit-scrollbar-thumb {
     text-align: left;
     float: left;
     font-size: 2.8vh;
-    padding: 1vh 2vh;
+    padding: 1vh 4.3vh;
+    z-index: 10;    
 }
 
 #home li:hover ul
 {
     display: flex;
     flex-direction: column;
+    z-index: 10;    
 }
-
-/* Change the link color to #111 (black) on hover */
+#home li ul li:hover{
+        background-color: #bdc3c7;    
+}
 #home li a:hover{
     background-color: #bdc3c7;
 }
-
-#about{
+/*------------Login---------*/
+#notlogin{
+    cursor: pointer;
     float: right;
 }
+#loginlb{
+    margin-top: 1vh;
+    margin-left: 0.5vh;
+    margin-right: 0.5vh;
+    color: rgba(189, 195, 199,1.0);
+    font-family: "FLAT";
+}
+#loginlb input{
+    font-family: 'FLAT';
+    font-size: 2vh;
+    color:rgba(44, 62, 80,1.0);
+    background-color: rgba(189, 195, 199,1.0);
+    margin-top: -1vh;
+    margin-left: 0.5vh;
+    margin-right: 0.5vh;
+    border-radius: 0.3vh;
+}
+#loginbtn
+{
+    cursor: pointer;
+    margin-top: 1vh;
+    margin-left: 0.5vh;
+    margin-right: 0.5vh;
+    background-color: rgba(44, 62, 80,1.0);
+    border: none;
+    border-radius: 0.5vh;
+    padding: 1vh;
+    color: rgba(189, 195, 199,1.0);
+    font-family: "FLAT";
+    min-width: 15vh;
+}
+/*--------footer--------*/
+#footer{
+    width: 100%;
+    height: 5vh;
+    margin-top: 3vh;
+    margin-bottom: 0vh;
+    text-align: center;
+    font-size: 5vh;
+    font-family: 'FLAT';
+    color:rgba(44, 62, 80,1.0);
+    background-color: rgba(52, 73, 94,1.0);
+    border-top: 0.2vh solid rgba(189, 195, 199,1.0);
+}
+/*----------selector-general-------*/
+button{
+    margin-top: 0.5vh;
+    margin-bottom: 0.5vh;
+    background-color: rgba(44, 62, 80,1.0);
+    border: none;
+    border-radius: 0.5vh;
+    padding: 2vh;
+    font-size: 2vh;
+    color: rgba(189, 195, 199,1.0);
+    font-family: "FLAT";
+    min-width: 15vh;
+}
 
+button:active{
+        background-color: rgba(149, 165, 166,1.0);
+        color: rgba(44, 62, 80,1.0);
+    	box-shadow: 1vh 1vh 1vh rgba(0,0,0,0.4);
+    	transform: translateY(1vh);
+}
+button:hover{
+    transform: translateY(0.1vh);
+}
+
+/*--------switch--------*/
+#switch
+{
+    display: flex;
+    justify-content: space-between;
+    position: relative;
+    margin: 0;
+    margin-top: 4%;
+    margin-bottom: -3%;
+    color: rgba(44, 62, 80,1.0);
+    font-family: "FLAT";
+    font-size: 4vh;
+    z-index: 0;
+}
+#arrowl-home{
+    margin-top: 0.5vh;
+    margin-left: 1vh;
+    background-color: rgba(44, 62, 80,1.0);
+    width: 7vh;
+    height: 5vh;
+-webkit-clip-path: polygon(40% 0%, 40% 20%, 100% 20%, 100% 80%, 40% 80%, 40% 100%, 0% 50%);
+clip-path: polygon(40% 0%, 40% 20%, 100% 20%, 100% 80%, 40% 80%, 40% 100%, 0% 50%);
+}
+#arrowr-home{
+    margin-top: 0.5vh;
+    background-color: rgba(44, 62, 80,1.0);
+    width: 7vh;
+    height: 5vh;
+-webkit-clip-path: polygon(0% 20%, 60% 20%, 60% 0%, 100% 50%, 60% 100%, 60% 80%, 0% 80%);
+clip-path: polygon(0% 20%, 60% 20%, 60% 0%, 100% 50%, 60% 100%, 60% 80%, 0% 80%);
+}
+
+#arrowl-home:hover{
+    background-color: rgb(127, 140, 141);
+    transform: translateX(-1vh);
+}
+    #arrowr-home:hover{
+    background-color: rgb(127, 140, 141);
+    transform: translateX(1vh);
+
+}
+#arrowl-home:active{
+    background-color: rgb(241, 196, 15);
+}
+    #arrowr-home:active{
+    background-color: rgb(241, 196, 15);
+}
+/*---------------------------------------------Stat&Bag-----------------------------------------------------*/
+#stat{
+    overflow: hidden;
+    height: 129.5vh;
+}
+
+#character-stat{
+    position: relative;
+    margin-left: 29%;
+    margin-right: auto;
+    top: 7.5vh;
+    overflow-x: hidden;
+    height: 110vh;
+    width:45%
+}
+
+/*---------------------------------------------HOME---------------------------------------------------------*/
+#accueil{
+    overflow: hidden;
+    height: 129.5vh;
+}
+#please-home{
+    margin-left: 22%;
+    margin-top: 20%;
+    position:   absolute;
+    font-family: "FLAT";
+    font-size: 5vh;
+}
+.canvas-home {
+    top: 26vh;
+    margin-left: 4vh; 
+    position: absolute;
+    border: 0.2vh solid black;
+    float: left;
+    max-width: 70vh;
+    min-width: 70vh;
+    max-height: 100vh;
+    min-height: 100vh;
+}
+/*---------------------Info-Perso-----------------------*/
+#character{
+    position: relative;
+    float: right;
+    top: 7.5vh;
+    right: 2vh;
+    overflow-x: hidden;
+    height: 108vh;
+    width:50%
+}
+/*---------category-----------*/
+#category{
+    background-color: rgba(44, 62, 80,1.0);
+    width: 86vh;
+    color: #ecf0f1;
+    font-family: "FLAT";
+    font-size: 4vh;
+    margin-bottom: 1vh;
+    margin-top: 1vh;
+    border: 0.2vh solid rgba(44, 62, 80,1.0);
+}
+#bar-category{
+    display: flex;
+    justify-content: space-between;
+}
+#title-category{
+    margin-left: 2vh;
+}
+#down{
+    margin-top: -0.5vh;
+    background-color: rgb(127, 140, 141);
+    float: right;
+    height: 4vh;
+    width: 8vh;
+    -webkit-clip-path: polygon(50% 71%, 100% 50%, 50% 100%, 0 50%);
+    clip-path: polygon(50% 71%, 100% 50%, 50% 100%, 0 50%);
+}
+#up{
+    margin-top: 1vh;
+    background-color: rgb(127, 140, 141);
+    float: right;
+    height: 4vh;
+    width: 8vh;
+    transform: rotate(180deg);
+    -webkit-clip-path: polygon(50% 71%, 100% 50%, 50% 100%, 0 50%);
+    clip-path: polygon(50% 71%, 100% 50%, 50% 100%, 0 50%);
+}
+#down:hover, #up:hover{
+        background-color:#ecf0f1;    
+}
+
+#btncategory{
+    padding: 0.5vh;
+    background-color:rgba(44, 62, 80,1.0);
+    margin: 0;
+    border-radius: 0;
+    width: 86vh;
+    display: none;
+    justify-content: center;
+}
+
+#add{
+    background-image: url("http://localhost/rpgdit/asset/css/add2.png");
+    background-size: 100%;
+    width: 4vh;
+    height: 4vh;
+}
+#btncategory:hover #add{
+    background-image: url("http://localhost/rpgdit/asset/css/add.png");
+    animation: rotate 1s 1;
+}
+#btncategory:hover{
+    color: #ecf0f1;
+    background-color:rgb(52, 73, 94);
+    transform: translateY(0vh);
+}
+#btncategory:hover #add{
+    background-image: url("http://localhost/rpgdit/asset/css/add.png");
+    animation: rotate 1s 1;
+}
+
+#form-category
+{
+    background-color: #2c3e50;
+    padding-bottom: 1vh;
+    width: 87vh;
+}
+#catlb{
+    margin-top: 2vh;
+    margin-left: 0.5vh;
+    margin-right: 0.5vh;
+    color: #ecf0f1;
+    font-family: "FLAT";
+    font-size: 2vh;
+}
+#catlb input{
+    border: 0.2vh inset rgba(189, 195, 199,1.0);
+    font-family: 'FLAT';
+    font-size: 2vh;
+    color:#2c3e50;
+    background-color: rgba(189, 195, 199,1.0);
+    margin-left: 0.5vh;
+    margin-right: 0.5vh;
+    border-radius: 0.3vh;
+}
+#catbtn
+{
+    margin-top: 2vh;
+    margin-left: 0.5vh;
+    margin-right: 0.5vh;
+    background-color: #ecf0f1;
+    border: none;
+    font-size: 1.5vh;
+    color: rgba(44, 62, 80,1.0);
+    font-family: "FLAT";
+    width: 15vh;
+    height: 4.5vh;
+}
+
+#img-suppr{
+    cursor: pointer;
+    float: right;
+    margin: 1vh;
+    width: 3vh;
+    height: 3vh;
+}
+#img-suppr:hover{
+    animation: rotate 2s 1;
+}
+/*---------character----------*/
+#btncharacter{
+    padding: 0.5vh;
+    background-color:#ecf0f1;
+    margin: 0;
+    border-radius: 0;
+    width: 85.2vh;    
+    margin-left: 0.1vh;
+    display: none;
+    justify-content: center;
+}
+#dispcharact{
+    color: rgba(44, 62, 80,1.0);
+    display: flex;
+    justify-content: space-around;
+    background-color:#ecf0f1;
+    margin-left: 0.1vh;
+    margin-right: 0.3vh;
+}
+#skill-separator{
+   background-color: rgba(44, 62, 80,1.0);
+    width: 4vh;
+    height: 6vh;
+    position: absolute;
+    -webkit-clip-path: polygon(50% 0%, 50% 0%, 60% 20%, 60% 80%, 50% 100%, 50% 100%, 40% 80%, 40% 20%);
+clip-path: polygon(50% 0%, 50% 0%, 60% 20%, 60% 80%, 50% 100%, 50% 100%, 40% 80%, 40% 20%);
+}
+#charact-suppr{
+    cursor: pointer;
+    /* position: absolute; */
+    right: 2vh;
+    margin-top: 2vh;
+    width: 3vh;
+    height: 3vh;
+    background-color: rgba(44, 62, 80,1.0);
+    -webkit-clip-path: polygon(20% 0%, 0% 20%, 30% 50%, 0% 80%, 20% 100%, 50% 70%, 80% 100%, 100% 80%, 70% 50%, 100% 20%, 80% 0%, 50% 30%);
+clip-path: polygon(20% 0%, 0% 20%, 30% 50%, 0% 80%, 20% 100%, 50% 70%, 80% 100%, 100% 80%, 70% 50%, 100% 20%, 80% 0%, 50% 30%);
+}
+#charact-change{
+    cursor: pointer;
+    /* position: absolute; */
+    left: 2vh;
+    margin-top: 2vh;
+    width: 3vh;
+    height: 3vh;
+    background-image: url("http://localhost/rpgdit/asset/css/change.png");
+    background-size: cover;
+}
+#charact-suppr:hover{
+    background-color:rgba(192, 57, 43,1.0);
+}
+#btncharacter:hover{
+    color: #ecf0f1;
+    background-color:rgba(189, 195, 199,1.0);
+    transform: translateY(0vh);
+}
+#btncharacter:hover #add{
+    background-image: url("http://localhost/rpgdit/asset/css/add.png");
+    animation: rotate 1s 1;
+}
+#form-character
+{
+    background-color: rgba(189, 195, 199,1.0);
+    border-bottom-left-radius: 0.5vh;
+    border-bottom-right-radius: 0.5vh;
+    padding-bottom: 1vh;
+    width: 85.2vh;
+    margin-left: 0.1vh;
+}
+#charlb{
+    margin-top: 2vh;
+    margin-left: 0.5vh;
+    margin-right: 0.5vh;
+    color: #2c3e50;
+    font-family: "FLAT";
+    font-size: 2vh;
+}
+
+#charlb input{
+    border: 0.2vh inset rgba(189, 195, 199,1.0);
+    font-family: 'FLAT';
+    font-size: 2vh;
+    color:#2c3e50;
+    background-color: #ecf0f1;
+    margin-left: 0.5vh;
+    margin-right: 0.5vh;
+    border-radius: 0.3vh;
+}
+
+#charbtn
+{
+    margin-top: 2vh;
+    margin-left: 0.5vh;
+    margin-right: 0.5vh;
+    background-color: rgba(44, 62, 80,1.0);
+    border: none;
+    font-size: 1.5vh;
+    color: #ecf0f1;
+    font-family: "FLAT";
+    width: 15vh;
+    height: 4.5vh;
+}
+
+#opt-char
+{
+     border-radius: 0;
+     margin-bottom: 0;
+     min-width:86vh;
+     margin-right:1vh;
+     display: flex;
+     justify-content: center;
+}
+#modif{
+    width: 10vh;
+    height: 5vh;
+    background-size: 50%;
+    background-repeat: no-repeat;
+    background-image: url("http://localhost/rpgdit/asset/css/modify.png");
+}
+/*-------------------------------------generator sheet------------------------------------------------------*/
+#sheet{
+    overflow: hidden;
+    height: 108vh;
+    margin-top: 2vh;
+}
+/*---------canvas----------*/
 #canvas{
         animation: gost 1s 1;
     background-color: rgba(189, 195, 199,1.0);
@@ -151,55 +582,60 @@ body::-webkit-scrollbar-thumb {
     max-width: 70vh;
     min-width: 70vh;
 }
-@keyframes gost
-{
-        from {filter: alpha(opacity=0);
-    opacity: 0;}
-    to {opacity: 100%;}
-}
-.canvas {
+
+.grid-canvas{
     animation: gost 1s 1;
     border: 0.2vh solid black;
-    background-image: url("./icon/quad.png");
-    background-size: 14%;
+    background-image: url("http://localhost/rpgdit/asset/css/quad.png");
+    background-size: 12.5%;
+        max-height: 100vh;
+    min-height: 100vh;
+    max-width: 70vh;
+    min-width: 70vh;
+}
+.canvas {
+    border: 0.2vh solid black;
     float: left;
     max-height: 100vh;
     min-height: 100vh;
     max-width: 70vh;
     min-width: 70vh;
 }
-
+/*------------middle-bar---------*/
 #touch{
     animation: gost 1s 1;
     position: fixed;
-    margin-left:45%;
+    margin-left:46%;
+    margin-top:4vh;
     display: grid;
     grid-template-columns: 15vh;
 }
-button{
-    margin-top: 0.5vh;
-    margin-bottom: 0.5vh;
+
+#mybtn3{
+    margin-top: 1vh;
     background-color: rgba(44, 62, 80,1.0);
-    border: none;
-    border-radius: 0.5vh;
-    padding: 2vh;
-    font-size: 2vh;
-    color: rgba(189, 195, 199,1.0);
-    font-family: "FLAT";
-    min-width: 15vh;
+    border: 0.5vh inset rgba(52, 73, 94,1.0);
+    padding: 0.5vh;
 }
+
 #mybtn1{
-    margin-top: 8vh;
     background-color: rgba(44, 62, 80,1.0);
     border: 0.5vh inset rgba(52, 73, 94,1.0);
     padding: 0.5vh;
 }
 #mybtn2{
-    margin-top: 8vh;
     background-color: rgba(44, 62, 80,1.0);
     border: 0.5vh inset rgba(52, 73, 94,1.0);
     padding: 0.5vh;
 }
+#mybtn2:active{
+            background-color: rgba(149, 165, 166,1.0);
+                border: 0.5vh inset rgba(149, 165, 166,1.0);
+        color: rgba(44, 62, 80,1.0);
+    	box-shadow: 1vh 1vh 1vh rgba(0,0,0,0.4);
+    	transform: translateY(1vh);    
+}
+
 #myimg1{
     width: 4.5vh;
     height: 4.5vh;
@@ -207,15 +643,6 @@ button{
 #myimg2{
     width: 4.5vh;
     height: 4.5vh;
-}
-button:active{
-        background-color: rgba(149, 165, 166,1.0);
-        color: rgba(44, 62, 80,1.0);
-    	box-shadow: 1vh 1vh 1vh rgba(0,0,0,0.4);
-    	transform: translateY(1vh);
-}
-button:hover{
-    transform: translateY(0.1vh);
 }
 #export{
         border-radius: 1vh;
@@ -226,9 +653,11 @@ button:hover{
         padding: 0.5vh;
         border:  initial;
 }
+
 #exportButton:hover{
                     transform: translateY(0.1vh);
 }
+
 #exportButton:active{
         	transform: translateY(0.3vh);
             background-color: rgba(149, 165, 166,1.0);
@@ -236,6 +665,7 @@ button:hover{
 }
 #label-json{
     margin-top: 0.5vh;
+    margin-bottom: 0vh;
     cursor: auto;
     width: 15vh;
     height: 4vh;
@@ -252,6 +682,8 @@ button:hover{
                 transform: translateY(0.1vh);
 }
 #label-text{
+    cursor: pointer;
+    margin-left: -5vh;
     margin-top: 0.7vh;
     position: absolute;
 }
@@ -266,13 +698,13 @@ button:hover{
     padding: 5vh;
     width: 0.1vh;
     height: 0.1vh;
-    cursor: inherit;
+    cursor: pointer;
     filter: alpha(opacity=0);
     opacity: 0;
     background-color: rgba(1, 1, 1, 0);
     border: none;
     }
-    #text{
+#text{
     padding: 0;
     margin: 0.1vh;
     border-radius: 1vh;
@@ -282,20 +714,21 @@ button:hover{
 #jscolor{
     margin: 0vh;
     margin-bottom: 1vh;
-    max-width: 14vh;
-    min-width: 14vh;
-    min-height: 2vh;
+    width: 15vh;
+    height: 3vh;
     font-size: 1vh;
     border: 0.5vh solid  rgba(52, 73, 94,1.0);
     border-radius: 1vh;
     text-align: center;
     color: rgba(189, 195, 199,1.0);
     font-family: "FLAT";
-    }
+    cursor: pointer;
+}
 
 #font{
     background-color: rgba(52, 73, 94,1.0);
     margin: 0vh;
+    margin-bottom: 1vh;
     padding: 0;
     width: 15vh;
     display: grid;
@@ -304,18 +737,105 @@ button:hover{
     font-size: 2vh;
     color: rgba(189, 195, 199,1.0);
     font-family: "FLAT";
-    appearance:none;
     -moz-appearance:none;
     -webkit-appearance:none;
+    cursor: pointer;
 }
+
+
+#json{
+    display: none;
+    background-color: rgba(52, 73, 94,1.0);
+    margin: 0vh;
+    padding: 0;
+    height: 3vh;
+    width: 15vh;
+    border-radius: 1vh;
+    border: none;
+    font-size: 2vh;
+    color: rgba(189, 195, 199,1.0);
+    font-family: "FLAT";
+    -moz-appearance:none;
+    -webkit-appearance:none;
+    cursor: pointer;
+}
+#json a{
+    text-decoration: none;
+}
+#json a:hover{
+    color: none;
+}
+
+#json ul::-webkit-scrollbar{
+    display: none;
+}
+#list-json
+{
+    display: flex;
+    flex-direction: column;
+    margin-top: 3vh;
+    max-height: 17vh;
+    width: 15vh;
+    overflow-y: scroll;
+    list-style-type: none;
+    position: absolute;
+    background-color: rgba(52, 73, 94,1.0);
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+    z-index: 1;
+    padding-left: 0;
+}
+
+#json ul div option{
+    text-decoration: none;
+    float: left;
+    width: 12vh;
+}
+#json:hover
+{
+    border-radius: 0vh;
+}
+#imgopt{
+    position: absolute;
+    background-color:rgba(52, 73, 94,1.0);
+    margin: 1vh;
+    float: right;
+    width: 2vh;
+    height: 2vh;
+    cursor: pointer;
+}
+#imgopt:hover{
+    background-color: #7f8c8d;
+}
+#saveButton
+{
+    font-size: 2vh;
+    margin-top: 1vh;
+    background-color: rgba(44, 62, 80,1.0);
+    border: none;
+    border-radius: 0.5vh;
+    padding: 1vh;
+    color: rgba(189, 195, 199,1.0);
+    font-family: "FLAT";
+    min-width: 15vh;
+    cursor: pointer;
+}
+
+#saveButton:hover
+{
+    transform: translateY(0.1vh);
+}
+
 .grid>*:nth-child(even) {
-            background-color: rgba(52, 73, 94,1.0);
-        }
+        background-color: rgba(52, 73, 94,1.0);
+    }
 
-        .grid>*:nth-child(odd) {
-            background-color: rgba(44, 62, 80,1.0);
-        }
-
+.grid>*:nth-child(odd) {
+        background-color: rgba(44, 62, 80,1.0);
+    }
+#ghost{
+    display: none;
+}
+/*-----------selector-asset----------*/
 #group{
         animation: gost 1s 1;
         float: right;
@@ -342,7 +862,7 @@ button:hover{
 }
  
 #side::-webkit-scrollbar-track {
-    -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.3);
+    box-shadow: inset 0 0 6px rgba(0,0,0,0.3);
 }
  
 #side::-webkit-scrollbar-thumb {
@@ -351,6 +871,7 @@ button:hover{
 }
 
 #menu {
+    cursor: pointer;
     list-style-type: none;
     margin: 0;
     padding: 0;
@@ -383,6 +904,7 @@ button:hover{
 
 .rig{
     -webkit-padding-start: 4vh;
+    -moz-padding-start: 4vh;
 	list-style: none;
     margin-bottom: 1vh;
     display: grid;
@@ -401,7 +923,7 @@ button:hover{
 }
 #ima {
 	width: 25vh;
-    height: auto;
+    height: 27vh;
 	margin-left: 1vh;
 	margin-top: 1vh;
 }
@@ -414,8 +936,9 @@ button:hover{
 }
 
 #tuto{
-    width: 65vh;
-    height: 104vh;
+
+    text-align: center;
+    height: 103vh;
 }
 #tuto-titre{
     margin-top: 0;
@@ -428,63 +951,6 @@ button:hover{
 #tuto-p{
     font-family: "FLAT";
     margin-top: 0;
-    font-size: 2.5vh;
+    font-size: 3.5vh;
     color: rgba(44, 62, 80,1.0);
-}
-#footer{
-    width: 100%;
-    height: 5vh;
-    margin-top: 6vh;
-    margin-bottom: 0vh;
-    text-align: center;
-    font-size: 5vh;
-    font-family: 'FLAT';
-    color:rgba(44, 62, 80,1.0);
-    background-color: rgba(52, 73, 94,1.0);
-    border-top: 0.2vh solid rgba(189, 195, 199,1.0);
-}
-
-@media screen and (max-width : 361px) {
-        #touch{
-            margin-left: 2vh;
-        position: relative;
-    grid-template-columns: 15vh 15vh 15vh 15vh;
-    }
-    #menu {
-        min-width: 360px;
-    max-width: 360px;
-    position: relative;}
-        .rig{
-        margin-left: -8vh;
-    }
-        button{
-    margin-left: 1vh;
-    margin-right: 1vh;
-    }
-    li a {
-    padding: 0;
-}
-    #group
-    {
-    margin: 0;
-    float: none;
-    margin-bottom: 3vh;
-    min-width: 360px;
-    max-width: 360px;
-    
-    }
-    .canvas{
-        position: initial;
-        float: none;
-        margin-left: 0;
-    }
-    body{min-width: 360px;
-    max-width: 360px;}
-    #sheet{
-    max-height: 230vh;
-    min-height: 230vh;
-    min-width: 360px;
-    max-width: 360px;
-    overflow: hidden;
-    }
 }

@@ -1,11 +1,54 @@
+<!-- //<?php include 'C:\wamp64\www\RPGDIT\src\login.php';?> -->
+    <?php
+$username = NULL;
+$password = NULL;
+$agree = false;
+
+if ($_COOKIE['username'] != "PHPLOL")
+{
+if(isset($_POST['submit']))
+{
+    if( isset($_POST['pseudo']) && isset($_POST['psw'])){
+        $username = $_POST['pseudo'];
+        $password = $_POST['psw'];
+	    $agree = Login($username, $password, $agree);
+        if ($agree == true)
+            setcookie("username", $username);
+}
+    }
+if(isset($_POST['Signin']))
+{
+    if( isset($_POST['pseudo']) && isset($_POST['psw']))
+    {
+        $username = $_POST['pseudo'];
+        $password = $_POST['psw'];
+            $agree = Signin($username, $password, $agree);
+            if ($agree == true)
+            {
+                $agree = Login($username, $password, $agree);
+                if ($agree == true)
+                {
+                    setcookie("username", $username);
+                }
+            }
+    }
+}
+}else
+{
+    setcookie("username","PHPLOL",time()-1);
+    header('Location: http://localhost/rpgdit/');
+}
+?>
 <!doctype html>
 <html lang="fr">
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="icon" href="./public/favicon.ico" />
-        <link rel="stylesheet" type="text/css" href="../src/color-picker/color-picker.css">
-    <link rel="stylesheet" type="text/css" href="../src/css/Flat.css">
+    <link rel="icon" href="public/favicon.ico" />
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="src/css/Flat.css">
+    <link rel="stylesheet" type="text/css" href="src/color-picker/color-picker.min.css">
+    
     <title>RPGDIT</title>
   </head>
   <body>
@@ -14,30 +57,27 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/babel-standalone/6.21.1/babel.min.js"></script>
 
     <!-- React Library -->
-    <script src="https://unpkg.com/react@15/dist/react.js"></script>
+    <script src="https://unpkg.com/react@15/dist/react.min.js"></script>
     <script src="https://unpkg.com/react-dom@16.0.0-alpha/dist/react-dom.min.js"></script>
     <!-- Other Library -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.js"></script>
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/fabric.js/1.7.11/fabric.js"></script>
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/1.3.4/jspdf.debug.js"></script>
-        <script src="../src/color-picker/color-picker.min.js"></script>
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/FileSaver.js/1.3.3/FileSaver.js"></script>
-    <!------------------------------------------------------------------------------------------------------------------>
-    <!-- React Components -->
-    <!------------------------------------------------------------------------------------------------------------------>
-    <script type="text/babel" src="../src/sheet.js"></script>
-    <script type="text/babel" src="../src/home.js"></script>
-    <script type="text/babel" src="../src/canvas.js"></script>
-    <script id ="index" type="text/babel" src="../src/index.js"></script>
-    <script type="text/javascript" src="../src/css.js"></script>
-    <script type="text/javascript" src="../src/download.js"></script>
-    <script type="text/javascript" src="../src/box.js"></script>
-    <script type="text/javascript" src="../src/background.js"></script>
-    <script type="text/babel" src="../src/image.js"></script>
-    <script type="text/javascript" src="../src/portrait.js"></script>
-    <script type="text/javascript" src="../src/predate.js"></script>
-    <script type="text/javascript" src="../src/skill.js"></script>
-        
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/fabric.js/1.7.14/fabric.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/1.3.4/jspdf.min.js"></script>
+        <script src="src/color-picker/color-picker.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/FileSaver.js/1.3.3/FileSaver.min.js"></script>
+        <!------------------------------------------------------------------------------------------------------------------>
+        <!-- React Components -->
+        <script type="text/babel" src="src/main.js"></script>
+        <script type="text/babel" src="src/image.js"></script>
+        <script type="text/babel" src="src/sheet.js"></script>
+        <script type="text/babel" src="src/home.js"></script>
+        <script type="text/babel" src="src/stat.js"></script>
+        <!------------------------------------------------------------------------------------------------------------------>
+    <!-- My Script -->
+        <script type="text/javascript" src="src/download.js"></script>
+        <script type="text/javascript" src="src/css.js"></script>
+        <script id ="index" type="text/babel" src="src/index.js"></script>
         <!-- Application entry point -->
   </body>
+  <footer><h2 id="footer"></h2></footer>
 </html>
